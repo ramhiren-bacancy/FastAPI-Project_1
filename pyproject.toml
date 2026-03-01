@@ -1,0 +1,19 @@
+[project]
+name = "todo"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aiosqlite>=0.22.1",
+    "alembic>=1.18.4",
+    "asyncpg>=0.31.0",
+    "fastapi[standard]>=0.129.0",
+    "psycopg2-binary>=2.9.11",
+    "pwdlib[argon2]>=0.3.0",
+    "pydantic-settings>=2.13.0",
+    "pyjwt>=2.11.0",
+    "python-dotenv>=1.2.1",
+    "redis>=7.2.1",
+    "sqlalchemy>=2.0.46",
+]
