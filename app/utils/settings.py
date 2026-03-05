@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     SECRET_KEY:str
     ALGORITHM:str
     EXP_TIME:int
-    
+    ALEMBIC_DB_CONNECTION:str
 
 settings = Settings()
 

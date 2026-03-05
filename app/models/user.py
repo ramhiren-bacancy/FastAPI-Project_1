@@ -15,6 +15,6 @@ class User(Base):
     username : Mapped[str] = mapped_column(String(50),unique=True,nullable=False)
     email : Mapped[str] = mapped_column(String(50),unique=True,nullable=False)
     password : Mapped[str] = mapped_column(String(200),nullable=False)
-    todos : Mapped[list["Todo"]] = relationship(back_populates="author", cascade="all,delete-orphan")
+    todos : Mapped[list["Todo"]] = relationship(back_populates="author", cascade="all,delete-orphan",passive_deletes=True)
     created_at : Mapped[DateTime] = mapped_column(DateTime(timezone=True),server_default=func.now())
     

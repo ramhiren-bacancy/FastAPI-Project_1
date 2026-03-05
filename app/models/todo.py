@@ -14,6 +14,6 @@ class Todo(Base):
     title: Mapped[str] = mapped_column(String(255), nullable=False)
     description: Mapped[str] = mapped_column(String(255), nullable=True)
     is_completed: Mapped[bool] = mapped_column(Boolean, default=False)
-    user_id : Mapped[int] = mapped_column(ForeignKey("users.id"),nullable=False,index=True)
+    user_id : Mapped[int] = mapped_column(ForeignKey("users.id",ondelete="CASCADE"),nullable=False,index=True)
     author: Mapped["User"] = relationship(back_populates="todos")
     created_at: Mapped[DateTime] = mapped_column(DateTime(timezone=True), server_default=func.now())
