@@ -1,9 +1,11 @@
 from celery import Celery
 
+from app.utils.settings import settings
+
 celery_app = Celery(
     "todo_workers",
-    broker="redis://default:bHWOOr7NokDLg7IzdD0qRkcG6vPkNdHQ@redis-18294.crce182.ap-south-1-1.ec2.cloud.redislabs.com:18294/0",
-    backend="redis://default:bHWOOr7NokDLg7IzdD0qRkcG6vPkNdHQ@redis-18294.crce182.ap-south-1-1.ec2.cloud.redislabs.com:18294/0",
+    broker= settings.CELERY_REDIS_URL,
+    backend= settings.CELERY_REDIS_URL,
     include=["app.tasks.email_task"]
 )
 
