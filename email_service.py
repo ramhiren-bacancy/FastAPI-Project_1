@@ -16,11 +16,11 @@ def send_welcome_email(email: str, username: str):
         f"""
         Hi {username},
 
-        Welcome to our platform!
-        Your account has been created successfully.
+        Welcome back to our platform!
+        Your account has been logged in successfully.
 
         Regards,
-        FastAPI Team
+        Todo Team
         """
     )
 

@@ -27,7 +27,7 @@ from app.utils.dependencies import get_current_user
 from app.utils.error_decorator import db_exception_handler
 from app.utils.response import api_response
 from database import get_db
-
+from app.tasks.email_task import send_welcome_back_email
 
 router = APIRouter()
 
@@ -162,6 +162,8 @@ async def user_login(
     token = create_access_token({"_id": exits_user.id})
     refresh_token = create_refresh_token({"_id": exits_user.id})
 
+    
+    
     data = {
         "access_token": token,
         "refresh_token": refresh_token,
@@ -170,6 +172,8 @@ async def user_login(
 
     response = api_response(status_code=200, message="Login successful", data=data)
 
+    send_welcome_back_email.delay(exits_user.email, exits_user.username)
+    
     return response
 
 
