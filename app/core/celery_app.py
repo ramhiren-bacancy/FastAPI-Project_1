@@ -5,7 +5,7 @@ from app.utils.settings import settings
 celery_app = Celery(
     "todo_workers",
     broker= settings.CELERY_REDIS_URL,
-    backend= settings.CELERY_REDIS_URL,
+    backend= settings.CELERY_BACKEND_REDIS_URL,
     include=["app.tasks.email_task"]
 )
 
@@ -18,3 +18,5 @@ celery_app.conf.update(
     result_expires=3600
 )
 
+print("BROKER:", settings.CELERY_REDIS_URL)
+print("BACKEND:", settings.CELERY_BACKEND_REDIS_URL)

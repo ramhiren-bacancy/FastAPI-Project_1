@@ -19,6 +19,7 @@ class Settings(BaseSettings):
     EXP_TIME:int
     ALEMBIC_DB_CONNECTION:str
     CELERY_REDIS_URL: str
+    CELERY_BACKEND_REDIS_URL: str
 
 settings = Settings()
 
