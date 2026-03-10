@@ -10,13 +10,13 @@ celery_app = Celery(
 )
 
 celery_app.conf.update(
-    broker_pool_limit=2,
-    broker_connection_retry_on_startup=True,
-    task_track_started = True,
-    worker_send_task_events=True,   # <-- REQUIRED
-    task_send_sent_event=True,       # <-- also useful
+    task_default_queue="celery",
+    task_default_exchange="celery",
+    task_default_routing_key="celery",
     result_expires=3600
 )
+
+celery_app.autodiscover_tasks(["app"])
 
 print("BROKER:", settings.CELERY_REDIS_URL)
 print("BACKEND:", settings.CELERY_BACKEND_REDIS_URL)
